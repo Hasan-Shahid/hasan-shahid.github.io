@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasan Shahid Kamal — AI & CS Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #090910;
+    --bg2: #0f0f1a;
+    --bg3: #141425;
+    --accent: #00e5ff;
+    --accent-dim: rgba(0,229,255,0.12);
+    --accent-glow: rgba(0,229,255,0.06);
+    --text: #e8eaf0;
+    --muted: #7a7d8c;
+    --border: rgba(255,255,255,0.07);
+    --border-accent: rgba(0,229,255,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grid overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(9,9,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.875rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-content { max-width: 780px; }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 .dim { color: var(--muted); font-weight: 300; }
+
+  .typewriter-wrap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--accent);
+    margin-bottom: 2rem;
+    min-height: 2rem;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background: var(--accent);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: #33eaff; transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-accent);
+  }
+  .btn-outline:hover { background: var(--accent-dim); color: var(--accent); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-item { }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+
+  /* SECTION COMMON */
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  #about { background: var(--bg2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .gpa-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-top: 1.5rem;
+  }
+
+  .lang-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .lang-pill {
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--bg); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  .skill-icon {
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+
+  .skill-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--bg2); }
+
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .timeline-item {
+    padding: 0 0 3rem 2.5rem;
+    position: relative;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--bg2), 0 0 0 5px rgba(0,229,255,0.2);
+  }
+
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-role {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-org {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* CERTS */
+  #certs { background: var(--bg); }
+
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+
+  .cert-card:hover { border-color: var(--border-accent); }
+
+  .cert-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.55rem;
+  }
+
+  .cert-name {
+    font-size: 0.875rem;
+    color: var(--text);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .cert-issuer {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--bg2); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .contact-text p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--border-accent);
+    background: var(--accent-dim);
+    color: var(--accent);
+  }
+
+  .contact-link-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-link-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* SCROLL FADE */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    #hero, .section-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+    .fade-in { opacity: 1; transform: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">H<span>.</span>K</a>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#certs">certs</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-tag">CS Student · AI &amp; Data Science</div>
+    <h1>Hasan Shahid<br><span class="dim">Kamal</span></h1>
+    <div class="typewriter-wrap">
+      <span id="typewriter"></span><span class="cursor"></span>
+    </div>
+    <p class="hero-bio">
+      Third-year Computer Science student at King Khalid University, building intelligent systems at the intersection of Machine Learning, Deep Learning, and Bioinformatics. Passionate about AI with real-world impact in medicine and agriculture.
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:hasanshahid05@gmail.com" class="btn btn-primary">Get in touch</a>
+      <a href="#experience" class="btn btn-outline">View experience ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">4.9<span>+</span></div>
+        <div class="stat-label">GPA</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8<span>+</span></div>
+        <div class="stat-label">Certificates</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3<span>rd</span></div>
+        <div class="stat-label">Year Student</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Languages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner fade-in">
+    <div class="section-label">// 01 — about</div>
+    <h2>Who I am</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Computer Science student at <strong>King Khalid University</strong>, where I've maintained a near-perfect GPA while pursuing my passion for Artificial Intelligence and Data Science.</p>
+        <p>My work spans Machine Learning, Deep Learning, IoT, and Bioinformatics. I'm drawn to problems where computation can have meaningful impact — particularly in <strong>medicine and agriculture</strong>.</p>
+        <p>Beyond coursework, I've trained at the <strong>KAUST AI Summer School</strong>, completed the <strong>KAUST Bioinformatics Program</strong>, and led the Innovation &amp; Development Unit of my university's CS Club.</p>
+        <div class="gpa-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          GPA: 4.9+ / 5.0 — King Khalid University
+        </div>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:1rem;">Education</div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:1.5rem;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:#fff;margin-bottom:0.25rem;">Bachelor of Computer Science</div>
+          <div style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem;">King Khalid University · 2023 – 2027</div>
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.7;">Focus: AI, Machine Learning, Data Science, Bioinformatics, IoT</div>
+        </div>
+
+        <div class="section-label" style="margin:2rem 0 1rem;">Languages</div>
+        <div class="lang-grid">
+          <span class="lang-pill">English</span>
+          <span class="lang-pill">Arabic</span>
+          <span class="lang-pill">Urdu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner fade-in">
+    <div class="section-label">// 02 — skills</div>
+    <h2>What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">lang</div>
+        <div class="skill-name">Python</div>
+        <div class="skill-sub">Primary language for ML/AI development and scripting</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">ml</div>
+        <div class="skill-name">Machine Learning</div>
+        <div class="skill-sub">scikit-learn, pandas, NumPy, matplotlib</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">dl</div>
+        <div class="skill-name">Deep Learning</div>
+        <div class="skill-sub">PyTorch — CNNs, segmentation, neural architectures</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">bio</div>
+        <div class="skill-name">Bioinformatics</div>
+        <div class="skill-sub">Genomic data analysis, biological sequence processing</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">db</div>
+        <div class="skill-name">SQL</div>
+        <div class="skill-sub">Database design and querying for data-driven projects</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">iot</div>
+        <div class="skill-name">IoT &amp; Embedded</div>
+        <div class="skill-sub">Arduino, C programming, embedded systems</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">sys</div>
+        <div class="skill-name">Java</div>
+        <div class="skill-sub">Object-oriented programming and software design</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">ops</div>
+        <div class="skill-name">Linux &amp; Shell</div>
+        <div class="skill-sub">Command-line workflows, shell scripting, system tools</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner fade-in">
+    <div class="section-label">// 03 — experience</div>
+    <h2>Where I've been</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Jan 2026</div>
+        <div class="timeline-role">KAUST Bioinformatics Program — Stage 2</div>
+        <div class="timeline-org">KAUST Academy · Thuwal, Saudi Arabia</div>
+        <div class="timeline-desc">Selected for the second stage of KAUST's competitive bioinformatics program, deepening expertise in computational biology and genomic data analysis.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Sep 2025 – Mar 2026</div>
+        <div class="timeline-role">CS Club Team Lead — Innovation &amp; Development Unit</div>
+        <div class="timeline-org">King Khalid University, College of Computer Science</div>
+        <div class="timeline-desc">Led the Innovation &amp; Development Unit of the university's Computer Science Club, directing projects and guiding a team of students in building technical solutions.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Jun – Aug 2025</div>
+        <div class="timeline-role">KAUST AI Summer School</div>
+        <div class="timeline-org">KAUST Academy · Saudi Arabia</div>
+        <div class="timeline-desc">Intensive summer school program at King Abdullah University of Science and Technology, focusing on advanced AI concepts, research methodologies, and cutting-edge machine learning techniques.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Apr – Jul 2025</div>
+        <div class="timeline-role">Trainee</div>
+        <div class="timeline-org">McKinsey Forward Program · Online</div>
+        <div class="timeline-desc">Completed McKinsey's flagship professional development program, gaining frameworks in structured problem-solving, communication, and leadership skills.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="section-inner fade-in">
+    <div class="section-label">// 04 — certifications</div>
+    <h2>What I've earned</h2>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Aerial Image Segmentation with PyTorch</div>
+          <div class="cert-issuer">Coursera</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Hands-on Introduction to Linux &amp; Shell Scripting</div>
+          <div class="cert-issuer">IBM · Coursera</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Cybersecurity Fundamentals</div>
+          <div class="cert-issuer">IBM</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">The Arduino Platform and C Programming</div>
+          <div class="cert-issuer">UC Irvine · Coursera</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Fundamental Skills in Bioinformatics</div>
+          <div class="cert-issuer">KAUST · Coursera</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Introduction to IoT and Embedded Systems</div>
+          <div class="cert-issuer">UC Irvine · Coursera</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Artificial Intelligence Fundamentals</div>
+          <div class="cert-issuer">IBM</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Interfacing with the Arduino</div>
+          <div class="cert-issuer">UC Irvine · Coursera</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner fade-in">
+    <div class="section-label">// 05 — contact</div>
+    <h2>Let's connect</h2>
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p>I'm open to research collaborations, AI projects, internships, and conversations about tech. Feel free to reach out — I'd love to hear from you.</p>
+        <a href="mailto:hasanshahid05@gmail.com" class="btn btn-primary">Send an email →</a>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:hasanshahid05@gmail.com" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          hasanshahid05@gmail.com
+        </a>
+
+        <div class="contact-link" style="cursor:default;">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          Khamis Mushayt, Saudi Arabia
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>built by hasan shahid kamal · 2025</span>
+</footer>
+
+<script>
+  const phrases = [
+    'AI & Machine Learning Engineer',
+    'Deep Learning Researcher',
+    'Bioinformatics Enthusiast',
+    'CS Student @ KKU',
+    'Building intelligent systems'
+  ];
+
+  let pi = 0, ci = 0, deleting = false;
+  const el = document.getElementById('typewriter');
+
+  function type() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    }
+    setTimeout(type, deleting ? 40 : 70);
+  }
+  type();
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
