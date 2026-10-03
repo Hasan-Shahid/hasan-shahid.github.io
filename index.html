@@ -37,7 +37,7 @@ body{
 a{color:inherit;text-decoration:none}
 a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
-
+ 
 /* nav */
 header{
   position:fixed;inset:0 0 auto 0;z-index:20;
@@ -52,7 +52,7 @@ header{
 .nav ul a:hover{color:var(--cyan)}
 .menu-btn{display:none;background:none;border:1px solid var(--line-strong);color:var(--ice);
   font-family:var(--display);padding:6px 14px;font-size:.85rem;cursor:pointer}
-
+ 
 /* hero */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:110px 0 70px}
 #net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
@@ -77,7 +77,7 @@ h1{
 .btn-solid:hover{transform:translateY(-2px);background:#8CEEFF}
 .btn-ghost{background:rgba(120,160,255,.12);color:var(--ice)}
 .btn-ghost:hover{background:rgba(120,160,255,.24)}
-
+ 
 /* live panel */
 .live{
   background:linear-gradient(160deg,rgba(18,27,63,.86),rgba(13,20,48,.7));
@@ -96,14 +96,14 @@ h1{
 .gpa{margin-top:6px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:baseline;gap:12px}
 .gpa b{font-family:var(--display);font-size:2.3rem;font-weight:700;color:var(--cyan);line-height:1}
 .gpa span{font-size:.86rem;color:var(--mist)}
-
+ 
 /* sections */
 section{padding:92px 0;position:relative}
 .sec-head{margin-bottom:44px;max-width:60ch}
 .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1}
 .sec-head p{color:var(--mist);margin-top:12px}
 .rule{height:1px;background:linear-gradient(90deg,var(--cyan),var(--violet) 40%,transparent);margin-bottom:28px;width:160px}
-
+ 
 /* about */
 .about{display:grid;grid-template-columns:1.3fr 1fr;gap:48px}
 .about p{margin-bottom:18px;color:#C4CFEE;max-width:62ch}
@@ -112,7 +112,7 @@ section{padding:92px 0;position:relative}
 .facts dt{font-size:.82rem;color:var(--mist);margin-bottom:3px}
 .facts dd{font-family:var(--display);font-size:1.08rem;font-weight:500}
 .facts dd small{display:block;font-family:var(--body);font-size:.85rem;color:var(--mist);font-weight:300}
-
+ 
 /* skills */
 .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .skill{background:var(--void);padding:28px 26px;transition:background .25s}
@@ -121,7 +121,7 @@ section{padding:92px 0;position:relative}
 .skill p{font-size:.9rem;color:var(--mist);margin-bottom:14px}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tags span{font-size:.76rem;padding:3px 10px;border:1px solid var(--line-strong);color:var(--cyan);border-radius:99px}
-
+ 
 /* experience */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
 .filters button{
@@ -147,13 +147,13 @@ section{padding:92px 0;position:relative}
 .job ul{margin:12px 0 0 18px;color:#C4CFEE;font-size:.94rem}
 .job ul li{margin-bottom:5px}
 .job ul li::marker{color:var(--violet)}
-
+ 
 /* certs */
 .certs{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
 .cert{display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
 .cert span:first-child{font-weight:400}
 .cert span:last-child{font-size:.82rem;color:var(--mist);white-space:nowrap;font-family:var(--display)}
-
+ 
 /* contact */
 .contact{
   text-align:center;border:1px solid var(--line-strong);padding:64px 24px;
@@ -166,7 +166,7 @@ section{padding:92px 0;position:relative}
 .contact p{color:var(--mist);max-width:50ch;margin:16px auto 30px}
 .contact .where{margin-top:26px;font-size:.88rem;color:var(--mist)}
 footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
-
+ 
 @media (max-width:860px){
   .hero-grid,.about{grid-template-columns:1fr}
   .skills{grid-template-columns:1fr 1fr}
@@ -190,7 +190,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
 </style>
 </head>
 <body>
-
+ 
 <header>
   <div class="wrap nav">
     <a href="#top" class="mark">H<span>.</span>K</a>
@@ -204,7 +204,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
     </ul>
   </div>
 </header>
-
+ 
 <main id="top">
   <div class="hero">
     <canvas id="net" aria-hidden="true"></canvas>
@@ -228,7 +228,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
       </aside>
     </div>
   </div>
-
+ 
   <section id="about">
     <div class="wrap">
       <div class="rule"></div>
@@ -248,7 +248,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
       </div>
     </div>
   </section>
-
+ 
   <section id="skills">
     <div class="wrap">
       <div class="rule"></div>
@@ -263,7 +263,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
       </div>
     </div>
   </section>
-
+ 
   <section id="experience">
     <div class="wrap">
       <div class="rule"></div>
@@ -274,7 +274,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
         <button data-f="lead" aria-pressed="false">Leadership and teaching</button>
         <button data-f="train" aria-pressed="false">Programs and training</button>
       </div>
-
+ 
       <div class="timeline">
         <article class="job now" data-k="research lead">
           <div class="job-card">
@@ -284,7 +284,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <ul><li>Lead a team of researchers working on Arabic PII (personally identifiable information), testing different techniques to see which work best for Arabic.</li></ul>
           </div>
         </article>
-
+ 
         <article class="job now" data-k="lead">
           <div class="job-card">
             <div class="when">May 2026 to present <span class="badge">Current</span></div>
@@ -293,7 +293,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <ul><li>Wrote the complete plan for the community.</li><li>Tutor and mentor students to help them start learning AI.</li></ul>
           </div>
         </article>
-
+ 
         <article class="job" data-k="lead">
           <div class="job-card">
             <div class="when">6 to 10 Sep 2026</div>
@@ -302,7 +302,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <ul><li>Taught a one-week training course on AI in games.</li></ul>
           </div>
         </article>
-
+ 
         <article class="job" data-k="research">
           <div class="job-card">
             <div class="when">Jul 2026 to Sep 2026</div>
@@ -311,7 +311,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <ul><li>Completed research for the Asalah project.</li><li>Built the first Saudi visual benchmark that includes human preference.</li></ul>
           </div>
         </article>
-
+ 
         <article class="job" data-k="research train">
           <div class="job-card">
             <div class="when">Jul 2026 to Sep 2026</div>
@@ -320,7 +320,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <ul><li>Completed two weeks of training in PLEXOS software for simulation and market planning.</li><li>Researched and analysed energy consumption, including renewables, in the lead-up to World Cup 2034.</li></ul>
           </div>
         </article>
-
+ 
         <article class="job" data-k="lead">
           <div class="job-card">
             <div class="when">Jul 2026 to Aug 2026</div>
@@ -329,7 +329,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <ul><li>Three weeks of intensive training covering a range of machine learning and deep learning topics.</li></ul>
           </div>
         </article>
-
+ 
         <article class="job" data-k="train">
           <div class="job-card">
             <div class="when">Jan 2026</div>
@@ -337,7 +337,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <div class="org">KAUST Academy, Thuwal</div>
           </div>
         </article>
-
+ 
         <article class="job" data-k="lead">
           <div class="job-card">
             <div class="when">Sep 2025 to Mar 2026</div>
@@ -345,7 +345,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <div class="org">King Khalid University, College of Computer Science, Al-Fara'a</div>
           </div>
         </article>
-
+ 
         <article class="job" data-k="train">
           <div class="job-card">
             <div class="when">Jun 2025 to Aug 2025</div>
@@ -354,7 +354,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <ul><li>One of the top 150 students selected from across the Kingdom.</li></ul>
           </div>
         </article>
-
+ 
         <article class="job" data-k="train">
           <div class="job-card">
             <div class="when">Apr 2025 to Jul 2025</div>
@@ -362,7 +362,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
             <div class="org">McKinsey, online</div>
           </div>
         </article>
-
+ 
         <article class="job" data-k="train">
           <div class="job-card">
             <div class="when">Jun 2024 to Aug 2024</div>
@@ -373,7 +373,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
       </div>
     </div>
   </section>
-
+ 
   <section id="certificates">
     <div class="wrap">
       <div class="rule"></div>
@@ -390,7 +390,7 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
       </div>
     </div>
   </section>
-
+ 
   <section id="contact">
     <div class="wrap">
       <div class="contact">
@@ -402,15 +402,15 @@ footer{padding:36px 0 44px;text-align:center;font-size:.82rem;color:var(--mist)}
     </div>
   </section>
 </main>
-
+ 
 <footer>Hasan Shahid Kamal, 2026</footer>
-
+ 
 <script>
 // mobile menu
 const mb=document.querySelector('.menu-btn'),menu=document.getElementById('menu');
 mb.addEventListener('click',()=>{const o=menu.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
 menu.addEventListener('click',e=>{if(e.target.tagName==='A'){menu.classList.remove('open');mb.setAttribute('aria-expanded',false)}});
-
+ 
 // experience filter
 const fb=document.querySelectorAll('.filters button'),jobs=document.querySelectorAll('.job');
 fb.forEach(b=>b.addEventListener('click',()=>{
@@ -418,7 +418,7 @@ fb.forEach(b=>b.addEventListener('click',()=>{
   const f=b.dataset.f;
   jobs.forEach(j=>{j.hidden=!(f==='all'||j.dataset.k.split(' ').includes(f))});
 }));
-
+ 
 // hero neural network: nodes drift, link when close, and lean toward the pointer
 (function(){
   const c=document.getElementById('net'),x=c.getContext('2d');
@@ -469,3 +469,4 @@ fb.forEach(b=>b.addEventListener('click',()=>{
 </script>
 </body>
 </html>
+ 
